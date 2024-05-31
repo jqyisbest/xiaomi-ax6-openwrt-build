@@ -69,6 +69,10 @@ jobs:
         echo "LAST_COMMIT_HASH=${LAST_COMMIT_HASH}" >> $GITHUB_ENV
         tag_name=$(date +%Y%m%d-%H%M)
         echo "tag_name=${tag_name}" >>$GITHUB_ENV
+
+    - name: SSH远程连接（make menuconfig）
+      if: env.ssh == 'true'
+      uses: danshui-git/debugger-action@main
     
     - name: Make Download
       run: |
