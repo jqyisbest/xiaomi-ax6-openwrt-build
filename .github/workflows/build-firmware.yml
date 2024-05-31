@@ -9,7 +9,7 @@ on:
         required: false
         default: 'false'
   schedule:
-    - cron: 15 21 2,7,12,17,22,27 * *
+    - cron: 15 21 */10 * *
   # push:
   # watch:
   #   types: started
