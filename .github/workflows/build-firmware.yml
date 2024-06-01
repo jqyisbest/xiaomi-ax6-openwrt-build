@@ -71,7 +71,6 @@ jobs:
         echo "tag_name=${tag_name}" >>$GITHUB_ENV
 
     - name: SSH远程连接（make menuconfig）
-      if: env.ssh == 'true'
       uses: danshui-git/debugger-action@main
     
     - name: Make Download
