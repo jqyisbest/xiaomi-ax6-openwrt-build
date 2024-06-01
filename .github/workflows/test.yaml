@@ -1,0 +1,25 @@
+name: test
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+  schedule:
+    - cron: 15 21 */10 * *
+  # push:
+  # watch:
+  #   types: started
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+
+    - name: SSH远程连接（make menuconfig）
+      uses: danshui-git/debugger-action@main
