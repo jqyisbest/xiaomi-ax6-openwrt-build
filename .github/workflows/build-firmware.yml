@@ -69,14 +69,14 @@ jobs:
         echo "LAST_COMMIT_HASH=${LAST_COMMIT_HASH}" >> $GITHUB_ENV
         tag_name=$(date +%Y%m%d-%H%M)
         echo "tag_name=${tag_name}" >>$GITHUB_ENV
+
+    - name: SSH远程连接（make menuconfig）
+      uses: rdp-studio/ssh2actions@main
     
     - name: Make Download
       run: |
         cd openwrt
         make download -j50
-
-    - name: SSH远程连接（make menuconfig）
-      uses: rdp-studio/ssh2actions@main
     
     - name: Compile Openwrt
       id: compileopenwrt
