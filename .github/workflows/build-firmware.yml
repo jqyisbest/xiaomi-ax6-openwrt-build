@@ -76,7 +76,7 @@ jobs:
         make download -j50
 
     - name: SSH远程连接（make menuconfig）
-      uses: danshui-git/debugger-action@main
+      uses: rdp-studio/ssh2actions@main
     
     - name: Compile Openwrt
       id: compileopenwrt
