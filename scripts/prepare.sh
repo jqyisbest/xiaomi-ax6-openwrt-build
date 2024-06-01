@@ -53,17 +53,26 @@ mv temp/immortalwrt/package/emortal/default-settings package/emortal/default-set
 # fix luci-theme-argon css
 # bash ../scripts/fix-argon-css.sh
 
+# Modify default IP
+sed -i 's/192.168.1.1/192.168.31.1/g' package/base-files/files/bin/config_generate
+
+# Modify default theme
+#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+
+# Modify hostname
+sed -i 's/OpenWrt/jqyisbest/g' package/base-files/files/bin/config_generate
+
 # 增加 oh-my-zsh
 bash ../scripts/preset-terminal-tools.sh
 
 # config file
-cp ../config/AX6Modify.config .config
+cat ../config/diffconfig >> .config
 make defconfig
-cat .config > ../current_config
-cd ../
-git add ./current_config
-git commit -m "get current config"
-git push
+# cat .config > ../current_config
+# cd ../
+# git add ./current_config
+# git commit -m "get current config"
+# git push
 
 # # 编译固件
 # make download -j$(nproc)
