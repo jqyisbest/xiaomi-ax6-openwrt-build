@@ -57,8 +57,8 @@ mv temp/immortalwrt/package/emortal/default-settings package/emortal/default-set
 bash ../scripts/preset-terminal-tools.sh
 
 # config file
-cp ../config/AX6Modify.config .config
 make defconfig
+cp ../config/AX6Modify.config .config
 
 # # 编译固件
 # make download -j$(nproc)
