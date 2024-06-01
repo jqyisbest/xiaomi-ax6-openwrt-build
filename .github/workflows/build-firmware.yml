@@ -70,8 +70,8 @@ jobs:
         tag_name=$(date +%Y%m%d%H%M)
         echo "tag_name=jqyisbest_${tag_name}" >>$GITHUB_ENV
 
-    # - name: SSH远程连接（make menuconfig）
-    #   uses: rdp-studio/ssh2actions@main
+    - name: SSH远程连接（make menuconfig）
+      uses: rdp-studio/ssh2actions@main
     
     - name: Make Download
       run: |
