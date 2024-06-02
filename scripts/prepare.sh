@@ -28,10 +28,10 @@ git clone https://github.com/immortalwrt/packages.git --single-branch --depth 1 
 git clone https://github.com/immortalwrt/immortalwrt.git --single-branch --depth 1 temp/immortalwrt
 
 ## KMS激活
-mv temp/luci/applications/luci-app-vlmcsd package/new/luci-app-vlmcsd
-mv temp/packages/net/vlmcsd package/new/vlmcsd
+# mv temp/luci/applications/luci-app-vlmcsd package/new/luci-app-vlmcsd
+# mv temp/packages/net/vlmcsd package/new/vlmcsd
 # edit package/new/luci-app-vlmcsd/Makefile
-sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/new/luci-app-vlmcsd/Makefile
+# sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/new/luci-app-vlmcsd/Makefile
 
 # rm -rf temp/luci/applications/luci-app-vlmcsd package/new/luci-app-vlmcsd
 # rm -rf temp/packages/net/vlmcsd package/new/vlmcsd
