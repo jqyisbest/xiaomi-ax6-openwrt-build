@@ -4,10 +4,11 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
-      ssh:
+      SSH_ACTION:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+        type: boolean
   schedule:
     - cron: 15 21 */10 * *
   # push:
@@ -71,6 +72,7 @@ jobs:
         echo "tag_name=jqyisbest_${tag_name}" >>$GITHUB_ENV
 
     - name: SSH远程连接（make menuconfig）
+      if: env.SSH_ACTION == 'true'
       uses: rdp-studio/ssh2actions@main
     
     - name: Make Download
