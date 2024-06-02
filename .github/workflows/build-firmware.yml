@@ -71,7 +71,7 @@ jobs:
         echo "tag_name=jqyisbest_${tag_name}" >>$GITHUB_ENV
 
     - name: SSH远程连接（make menuconfig）
-     uses: rdp-studio/ssh2actions@main
+      uses: rdp-studio/ssh2actions@main
     
     - name: Make Download
       run: |
