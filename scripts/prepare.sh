@@ -7,7 +7,7 @@
 ###
 
 # git clone https://github.com/zhkong/openwrt-ipq807x.git --single-branch openwrt --depth 1
-git clone https://github.com/TerryLip/AX6NSS.git --single-branch openwrt --depth 1
+git clone https://github.com/jqyisbest/AX6NSS.git --single-branch openwrt --depth 1
 cd openwrt
 
 # 更新 Feeds
