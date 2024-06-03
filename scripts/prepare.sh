@@ -7,7 +7,7 @@
 ###
 
 # git clone https://github.com/zhkong/openwrt-ipq807x.git --single-branch openwrt --depth 1
-git clone https://github.com/jqyisbest/AX6NSS.git --single-branch openwrt --depth 1
+git clone https://github.com/jqyisbest/AX6NSS-for-openwrt-build.git --single-branch openwrt --depth 1
 cd openwrt
 
 # 更新 Feeds
@@ -23,9 +23,9 @@ cd openwrt
 # git clone https://github.com/jerrykuku/luci-theme-argon.git --single-branch --depth 1 package/new/luci-theme-argon
 
 mkdir temp
-git clone https://github.com/immortalwrt/luci.git --single-branch --depth 1 temp/luci
-git clone https://github.com/immortalwrt/packages.git --single-branch --depth 1 temp/packages
-git clone https://github.com/immortalwrt/immortalwrt.git --single-branch --depth 1 temp/immortalwrt
+git clone https://github.com/jqyisbest/luci-for-openwrt-build.git --single-branch --depth 1 temp/luci
+git clone https://github.com/jqyisbest/packages-for-openwrt-build.git --single-branch --depth 1 temp/packages
+git clone https://github.com/jqyisbest/immortalwrt-for-openwrt-build.git --single-branch --depth 1 temp/immortalwrt
 
 ## KMS激活
 mv temp/luci/applications/luci-app-vlmcsd package/new/luci-app-vlmcsd
