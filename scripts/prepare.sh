@@ -54,10 +54,10 @@ mv temp/immortalwrt/package/emortal/default-settings package/emortal/default-set
 # bash ../scripts/fix-argon-css.sh
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.31.1/g' package/base-files/files/bin/config_generate
+# sed -i 's/192.168.1.1/192.168.31.1/g' package/base-files/files/bin/config_generate
 
 # Modify default theme
-#sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # Modify hostname
 # sed -i 's/OpenWrt/jqyisbest/g' package/base-files/files/bin/config_generate
