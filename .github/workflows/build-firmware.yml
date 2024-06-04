@@ -79,7 +79,14 @@ jobs:
       run: |
         cd openwrt
         make download -j50
-    
+
+    - name: Save Current Compile Config
+      run: |
+        cat ./openwrt/.config > ./config/current_compile_config
+        git add ./config/current_compile_config
+        git commit -m "Save Current Compile Config"
+        git push
+        
     - name: Compile Openwrt
       id: compileopenwrt
       continue-on-error: true
