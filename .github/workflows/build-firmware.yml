@@ -83,9 +83,14 @@ jobs:
     - name: Save Current Compile Config
       run: |
         cat ./openwrt/.config > ./config/current_compile_config
+        cd openwrt
+        ./script/diffconfig.sh > current_different_config
+        cat ./current_different_config > ./config/current_different_config
+        cd ../
         git add ./config/current_compile_config
-        git commit -m "Save Current Compile Config"
-        git push
+        git add ./config/current_compile_config
+        git commit -m "Save Current Compile Config And Current Different Config"
+        git push -f
         
     - name: Compile Openwrt
       id: compileopenwrt
