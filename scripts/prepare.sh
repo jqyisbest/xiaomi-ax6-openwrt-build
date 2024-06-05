@@ -47,9 +47,14 @@ rm -rf package/emortal/default-settings
 
 mv temp/luci/modules/luci-base feeds/luci/modules/luci-base
 mv temp/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
-rm -rf package/new/coremark
-mv temp/packages/utils/coremark package/new/coremark
+mv temp/luci/modules/luci-mod-system feeds/luci/modules/luci-mod-system
+# rm -rf package/new/coremark
+mv temp/packages/utils/coremark feeds/packages/utils/coremark
 mv temp/immortalwrt/package/emortal/default-settings package/emortal/default-settings
+
+mv "luci feed mod/10_system.js" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
+mv "luci feed mod/luci-mod-status.json" feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
+mv "luci feed mod/system.js" feeds/luci/modules/luci-mod-system/htdocs/luci-static/resources/view/system/system.js
 
 # fix luci-theme-argon css
 # bash ../scripts/fix-argon-css.sh
