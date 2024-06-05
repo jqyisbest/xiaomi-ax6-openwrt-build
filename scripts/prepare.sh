@@ -47,6 +47,7 @@ rm -rf package/emortal/default-settings
 
 mv temp/luci/modules/luci-base feeds/luci/modules/luci-base
 mv temp/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
+rm -rf package/new/coremark
 mv temp/packages/utils/coremark package/new/coremark
 mv temp/immortalwrt/package/emortal/default-settings package/emortal/default-settings
 
