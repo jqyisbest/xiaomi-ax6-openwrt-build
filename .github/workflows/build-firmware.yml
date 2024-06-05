@@ -85,7 +85,7 @@ jobs:
         cat ./openwrt/.config > ./config/current_compile_config
         cd openwrt
         ./scripts/diffconfig.sh > current_different_config
-        cat ./current_different_config > ./config/current_different_config
+        cat ./current_different_config > ../config/current_different_config
         cd ../
         git add ./config/current_compile_config
         git add ./config/current_different_config
