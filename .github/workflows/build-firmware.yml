@@ -14,6 +14,16 @@ on:
         required: false
         default: 'false'
         type: boolean
+      UPLOAD_ARTIFACT:
+        description: 'Upload artifact'
+        required: false
+        default: 'true'
+        type: boolean
+      CREATE_RELEASE:
+        description: 'Create release'
+        required: false
+        default: 'false'
+        type: boolean
   schedule:
     - cron: 15 21 */10 * *
   # push:
@@ -130,6 +140,7 @@ jobs:
         ls -Ahl
     
     - name: Upload artifact
+      if: github.event.inputs.UPLOAD_ARTIFACT == 'true'
       uses: actions/upload-artifact@main
       with:
         name: OpenWRT_${{ env.tag_name }}
@@ -137,6 +148,7 @@ jobs:
 
     
     - name: Create release
+      if: github.event.inputs.CREATE_RELEASE == 'true'
       id: create_release
       uses: ncipollo/release-action@v1.12.0
       with:
