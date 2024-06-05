@@ -55,6 +55,7 @@ mv temp/immortalwrt/package/emortal/default-settings package/emortal/default-set
 mv "luci feed mod/10_system.js" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 mv "luci feed mod/luci-mod-status.json" feeds/luci/modules/luci-mod-status/root/usr/share/rpcd/acl.d/luci-mod-status.json
 mv "luci feed mod/system.js" feeds/luci/modules/luci-mod-system/htdocs/luci-static/resources/view/system/system.js
+mv "luci feed mod/flash.js" feeds/luci/modules/luci-mod-system/htdocs/luci-static/resources/view/system/flash.js
 
 # fix luci-theme-argon css
 # bash ../scripts/fix-argon-css.sh
