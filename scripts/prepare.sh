@@ -80,6 +80,9 @@ make defconfig
 # git commit -m "get current config"
 # git push
 
+# rm -rf temp
+rm -rf temp
+
 # # 编译固件
 # make download -j$(nproc)
 # make -j$(nproc) || make -j1 V=s
