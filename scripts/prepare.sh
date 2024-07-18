@@ -31,10 +31,10 @@ git clone https://github.com/jqyisbest/immortalwrt-for-openwrt-build.git --singl
 # # edit package/new/luci-app-vlmcsd/Makefile
 # sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/new/luci-app-vlmcsd/Makefile
 ## AutoCore
-cp temp/immortalwrt/package/emortal/autocore package/new/
+cp -r temp/immortalwrt/package/emortal/autocore package/new/
 sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package/new/autocore/files/luci-mod-status-autocore.json
 ## Zerotier
-cp temp/luci/applications/luci-app-zerotier package/new/
+cp -r temp/luci/applications/luci-app-zerotier package/new/
 
 rm -rf feeds/luci/modules/luci-base
 rm -rf feeds/luci/modules/luci-mod-status
