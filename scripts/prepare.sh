@@ -47,8 +47,8 @@ rm -rf package/emortal/default-settings
 
 mv temp/luci/modules/luci-base feeds/luci/modules/luci-base
 mv temp/luci/modules/luci-mod-status feeds/luci/modules/luci-mod-status
-# rm -rf package/new/coremark
-mv temp/packages/utils/coremark feeds/packages/utils/coremark
+# mv temp/packages/utils/coremark feeds/packages/utils/coremark
+mv temp/packages/utils/coremark package/new/coremark
 mv temp/immortalwrt/package/emortal/default-settings package/emortal/default-settings
 
 mv "luci feed mod/10_system.js" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
@@ -59,9 +59,6 @@ mv "luci feed mod/flash.js" feeds/luci/modules/luci-mod-system/htdocs/luci-stati
 # fix luci-theme-argon css
 # bash ../scripts/fix-argon-css.sh
 
-# Modify default IP
-# sed -i 's/192.168.1.1/192.168.31.1/g' package/base-files/files/bin/config_generate
-
 # Modify default theme
 # sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
@@ -70,6 +67,13 @@ mv "luci feed mod/flash.js" feeds/luci/modules/luci-mod-system/htdocs/luci-stati
 
 # 增加 oh-my-zsh
 # bash ../scripts/preset-terminal-tools.sh
+
+# Modify default IP
+sed -i 's/10.10.10.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.1/g' package/base-files/files/bin/config_generate
+
+# 修改连接数
+sed -i '/customized in this file/a net.netfilter.nf_conntrack_max=65535' package/base-files/files/etc/sysctl.conf
 
 # config file
 cat ../config/diffconfig >> .config
