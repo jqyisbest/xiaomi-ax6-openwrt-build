@@ -36,6 +36,7 @@ sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package
 ## Zerotier
 cp -r temp/luci/applications/luci-app-zerotier package/new/
 cp -r temp/packages/net/zerotier package/new/
+sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/new/luci-app-zerotier/Makefile
 
 rm -rf feeds/luci/modules/luci-base
 rm -rf feeds/luci/modules/luci-mod-status
