@@ -35,6 +35,7 @@ cp -r temp/immortalwrt/package/emortal/autocore package/new/
 sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package/new/autocore/files/luci-mod-status-autocore.json
 ## Zerotier
 cp -r temp/luci/applications/luci-app-zerotier package/new/
+cp -r temp/packages/net/zerotier package/new/
 
 rm -rf feeds/luci/modules/luci-base
 rm -rf feeds/luci/modules/luci-mod-status
