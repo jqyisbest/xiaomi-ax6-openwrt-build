@@ -10,6 +10,11 @@
 git clone https://github.com/jqyisbest/AX6NSS-for-openwrt-build.git --single-branch openwrt --depth 1
 cd openwrt
 
+mkdir temp
+git clone https://github.com/jqyisbest/luci-for-openwrt-build.git --single-branch --depth 1 temp/luci
+git clone https://github.com/jqyisbest/packages-for-openwrt-build.git --single-branch --depth 1 temp/packages
+git clone https://github.com/jqyisbest/immortalwrt-for-openwrt-build.git --single-branch --depth 1 temp/immortalwrt
+
 # 更新 Feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
@@ -18,27 +23,18 @@ cd openwrt
 ## openclash
 # git clone https://github.com/vernesong/OpenClash.git --single-branch --depth 1 package/new/luci-openclash
 # bash ../scripts/download-openclash-core.sh
-
 ## argon theme
 # git clone https://github.com/jerrykuku/luci-theme-argon.git --single-branch --depth 1 package/new/luci-theme-argon
-
-mkdir temp
-git clone https://github.com/jqyisbest/luci-for-openwrt-build.git --single-branch --depth 1 temp/luci
-git clone https://github.com/jqyisbest/packages-for-openwrt-build.git --single-branch --depth 1 temp/packages
-git clone https://github.com/jqyisbest/immortalwrt-for-openwrt-build.git --single-branch --depth 1 temp/immortalwrt
-
 ## KMS激活
 # mv temp/luci/applications/luci-app-vlmcsd package/new/luci-app-vlmcsd
 # mv temp/packages/net/vlmcsd package/new/vlmcsd
-# edit package/new/luci-app-vlmcsd/Makefile
+# # edit package/new/luci-app-vlmcsd/Makefile
 # sed -i 's/..\/..\/luci.mk/$(TOPDIR)\/feeds\/luci\/luci.mk/g' package/new/luci-app-vlmcsd/Makefile
-
-# rm -rf temp/luci/applications/luci-app-vlmcsd package/new/luci-app-vlmcsd
-# rm -rf temp/packages/net/vlmcsd package/new/vlmcsd
-
-# AutoCore
-mv temp/immortalwrt/package/emortal/autocore package/new/autocore
+## AutoCore
+cp temp/immortalwrt/package/emortal/autocore package/new/
 sed -i 's/"getTempInfo" /"getTempInfo", "getCPUBench", "getCPUUsage" /g' package/new/autocore/files/luci-mod-status-autocore.json
+## Zerotier
+cp temp/luci/applications/luci-app-zerotier package/new/
 
 rm -rf feeds/luci/modules/luci-base
 rm -rf feeds/luci/modules/luci-mod-status
