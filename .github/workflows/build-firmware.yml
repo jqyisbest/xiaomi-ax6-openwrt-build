@@ -9,6 +9,11 @@ on:
         required: false
         default: 'false'
         type: boolean
+      RUN_MANUALLY_WITH_SSH:
+        description: 'Run Actions Manually With SSH'
+        required: false
+        default: 'false'
+        type: boolean
       SAVE_CONFIG:
         description: 'Save Current Compile Config'
         required: false
@@ -110,6 +115,7 @@ jobs:
         
     - name: Compile Openwrt
       id: compileopenwrt
+      if: github.event.inputs.RUN_MANUALLY_WITH_SSH == 'false'
       continue-on-error: true
       run: |
         cd openwrt
