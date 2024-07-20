@@ -9,8 +9,8 @@ on:
         required: false
         default: 'false'
         type: boolean
-      RUN_MANUALLY_WITH_SSH:
-        description: 'Run Actions Manually With SSH'
+      RUN_IN_SINGLE_THREAD:
+        description: 'Run Actions In Single Thread'
         required: false
         default: 'false'
         type: boolean
@@ -92,7 +92,7 @@ jobs:
         echo "tag_name=jqyisbest_${tag_name}" >>$GITHUB_ENV
 
     - name: SSH远程连接（make menuconfig）
-      if: github.event.inputs.SSH_ACTION == 'true' || github.event.inputs.RUN_MANUALLY_WITH_SSH == 'true'
+      if: github.event.inputs.SSH_ACTION == 'true'
       uses: rdp-studio/ssh2actions@main
     
     - name: Make Download
@@ -112,10 +112,20 @@ jobs:
         git add ./debug
         git commit -m "Save Current Compile Config And Current Different Config"
         git push -f
-        
+
+    - name: Compile Openwrt In Single Thread
+      id: compileopenwrtinsinglethread
+      if: github.event.inputs.RUN_IN_SINGLE_THREAD == 'true'
+      continue-on-error: true
+      run: |
+        cd openwrt
+        #echo | make kernel_oldconfig -j1 
+        IGNORE_ERRORS=1 make -j1 V=s
+        echo $?
+
     - name: Compile Openwrt
       id: compileopenwrt
-      if: github.event.inputs.RUN_MANUALLY_WITH_SSH == 'false'
+      if: github.event.inputs.RUN_IN_SINGLE_THREAD == 'false'
       continue-on-error: true
       run: |
         cd openwrt
@@ -124,7 +134,7 @@ jobs:
         echo $?
     
     - name: If Error
-      if: steps.compileopenwrt.outcome == 'failure'
+      if: steps.compileopenwrt.outcome == 'failure' 
       run: |
         cat openwrt/.config
         echo '================================================================'
