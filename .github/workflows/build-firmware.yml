@@ -29,8 +29,6 @@ on:
         required: false
         default: 'false'
         type: boolean
-  schedule:
-    - cron: 15 21 */10 * *
   # push:
   # watch:
   #   types: started
